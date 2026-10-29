@@ -1,0 +1,75 @@
+{
+  "version": "cn-a-share-exchange-rules-v1",
+  "effective_snapshot_date": "2026-07-26",
+  "price_limits": {
+    "main": {
+      "normal": [
+        {"effective_date": "1900-01-01", "rate": 0.1}
+      ],
+      "st": [
+        {"effective_date": "1900-01-01", "rate": 0.05},
+        {"effective_date": "2026-07-06", "rate": 0.1}
+      ]
+    },
+    "chinext": {
+      "normal": [
+        {"effective_date": "1900-01-01", "rate": 0.1},
+        {"effective_date": "2020-08-24", "rate": 0.2}
+      ],
+      "st": [
+        {"effective_date": "1900-01-01", "rate": 0.05},
+        {"effective_date": "2020-08-24", "rate": 0.2}
+      ]
+    },
+    "star": {
+      "normal": [
+        {"effective_date": "2019-07-22", "rate": 0.2}
+      ],
+      "st": [
+        {"effective_date": "2019-07-22", "rate": 0.2}
+      ]
+    },
+    "beijing": {
+      "normal": [
+        {"effective_date": "2021-11-15", "rate": 0.3}
+      ],
+      "st": [
+        {"effective_date": "2021-11-15", "rate": 0.3}
+      ]
+    }
+  },
+  "no_initial_limit": {
+    "main": {"effective_date": "2023-04-10", "trading_days": 5},
+    "chinext": {"effective_date": "2020-08-24", "trading_days": 5},
+    "star": {"effective_date": "2019-07-22", "trading_days": 5},
+    "beijing": {"effective_date": "2021-11-15", "trading_days": 1}
+  },
+  "lot_rules": {
+    "main": {"minimum": 100, "increment": 100},
+    "chinext": {"minimum": 100, "increment": 100},
+    "star": {"minimum": 200, "increment": 1},
+    "beijing": {"minimum": 100, "increment": 1}
+  },
+  "sources": [
+    {
+      "authority": "上海证券交易所",
+      "url": "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260424_10816474.shtml",
+      "supports": "2026-07-06 起主板风险警示股票涨跌幅由 5% 调整为 10%"
+    },
+    {
+      "authority": "深圳证券交易所",
+      "url": "https://www.szse.cn/lawrules/service/member/t20260630_621404.html",
+      "supports": "2026-07-06 起深市主板风险警示板规则调整"
+    },
+    {
+      "authority": "深圳证券交易所",
+      "url": "https://www.szse.cn/aboutus/trends/news/t20200821_580924.html",
+      "supports": "创业板 2020-08-24 起 20% 涨跌幅、首五日不限价及 100 股手数"
+    },
+    {
+      "authority": "北京证券交易所",
+      "url": "https://www.bse.cn/important_news/200010675.html",
+      "supports": "北交所 30% 涨跌幅、首日不限价、最低 100 股且按 1 股递增"
+    }
+  ]
+}
