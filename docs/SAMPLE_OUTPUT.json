@@ -1,0 +1,230 @@
+{
+  "default": {
+    "authoritative_for_execution": false,
+    "broker": "NONE",
+    "broker_accessed": false,
+    "classification": "DEMO_ONLY_NOT_FORMAL_EVIDENCE",
+    "cleanup_failed": false,
+    "demo_authority": false,
+    "evidence": {
+      "canonical_source_unchanged": true,
+      "execution_batch_receipt_sha256": "701050245192d58be283f7916b8a9f8f2f0921b90b2dd19a624ec70dacca4d38",
+      "execution_conformance_file_sha256": "e5fb4edc1ad0cda60ddda1beb1be6cdfcae79fdc65973b8ddaf0c8d0458735db",
+      "execution_conformance_report_sha256": "75d4db55deb51783602b5df590d67709115856721d4b9f4124afe69578f8a52a",
+      "fixture_sha256": "44aa1ef3bf9db8a8ee461e9db360141e95385bab8054e2818890e336dec57c6f",
+      "ledger_checkpoint_sha256": "9c1637d14822150e00448378e35bf75777e324fdbc42a9fccccb98f8a4988ffe",
+      "signal_batch_receipt_sha256": "d6b81b8744b91262d6f727b05f06b4a73d82825abacff1403e3cae7b2f66fb52",
+      "valuation_batch_receipt_sha256": "32b5dc597149fe9ec6245c74431bf27a57208728eb0e4c69d8cd58551f254a11",
+      "workspace_cleaned": true
+    },
+    "execution": {
+      "child_intent_count": 2,
+      "child_receipt_count": 1,
+      "fill_count": 2,
+      "parent_order_count": 2,
+      "platform_preflight": "PASS",
+      "pretrade_status": "PREPARED"
+    },
+    "execution_conformance": {
+      "adapter_reproduction_all_passed": true,
+      "authority_mapping": false
+    },
+    "formal_admission_eligible": false,
+    "formal_forward_evidence": false,
+    "idempotency": {
+      "activation": true,
+      "conflict_rejected": true,
+      "execution_batch": true,
+      "signal_batch": true,
+      "valuation_batch": true
+    },
+    "ledger": {
+      "cash": 30000.0,
+      "checkpoint_count": 4,
+      "equity": 96500.0,
+      "mark_to_market_pnl": -3500.0,
+      "positions": {
+        "510300": 3500,
+        "518880": 3500
+      },
+      "reconciliation_ok": true,
+      "recovery_read_only": false
+    },
+    "network": "POISONED",
+    "network_accessed": false,
+    "network_isolation_scope": "FRESH_CLI_NEW_CONNECTIONS_AND_SUBPROCESSES",
+    "ok": true,
+    "preexisting_socket_handles_covered": false,
+    "promotion_eligible": false,
+    "real_orders": false,
+    "risk": {
+      "compliant": true,
+      "decision": "PASS",
+      "mode": "NORMAL"
+    },
+    "schema": "vibe-research/offline-paper-demo-result/v1",
+    "signal": {
+      "eligible_risk_group_count": 2,
+      "signal_sha256": "082cc5caf5ef18a683b35550729e32a0cfeefcdbdb3595fa1f2bcb114431766b",
+      "target_codes": [
+        "510300",
+        "518880"
+      ],
+      "target_weights": {
+        "510300": 0.35,
+        "518880": 0.35
+      }
+    },
+    "strategy": {
+      "engine_id": "quant-platform/diversified-etf-trend/v1",
+      "engine_reuse_only": true,
+      "source_candidate_status": "FALSIFIED_REDESIGN_REQUIRED",
+      "strategy_id": "demo-only-etf-trend-v1"
+    },
+    "timeline": {
+      "execute_date": "2026-08-03",
+      "signal_date": "2026-07-31",
+      "valuation_date": "2026-08-04"
+    },
+    "workspace_cleaned": true
+  },
+  "qmt_compat": {
+    "authoritative_for_execution": false,
+    "broker": "QMT_COMPAT_SANDBOX",
+    "broker_accessed": false,
+    "certification_status": "NOT_RUN_REAL_QMT",
+    "classification": "DEMO_ONLY_NOT_FORMAL_EVIDENCE",
+    "cleanup_failed": false,
+    "demo_authority": false,
+    "durability_certification_status": "NOT_POWER_LOSS_CERTIFIED",
+    "evidence": {
+      "canonical_source_unchanged": true,
+      "execution_batch_receipt_sha256": "701050245192d58be283f7916b8a9f8f2f0921b90b2dd19a624ec70dacca4d38",
+      "execution_conformance_file_sha256": "e5fb4edc1ad0cda60ddda1beb1be6cdfcae79fdc65973b8ddaf0c8d0458735db",
+      "execution_conformance_report_sha256": "75d4db55deb51783602b5df590d67709115856721d4b9f4124afe69578f8a52a",
+      "fixture_sha256": "44aa1ef3bf9db8a8ee461e9db360141e95385bab8054e2818890e336dec57c6f",
+      "ledger_checkpoint_sha256": "9c1637d14822150e00448378e35bf75777e324fdbc42a9fccccb98f8a4988ffe",
+      "qmt_event_head_sha256": "85f67422baf6481bdbc9d37633f45d55ca5c15399b75f0741a54d8fd400cef4a",
+      "qmt_fixture_raw_sha256": "debbf1b3b89010d530f52f4ca55cae979f8324cd9e39f8ffb6d328b44e3ed1f8",
+      "qmt_fixture_sha256": "3ab0832ae052646d51ff89abdd058db246486e7f1c90fe7c2e42ab9c8cb417c1",
+      "signal_batch_receipt_sha256": "d6b81b8744b91262d6f727b05f06b4a73d82825abacff1403e3cae7b2f66fb52",
+      "valuation_batch_receipt_sha256": "32b5dc597149fe9ec6245c74431bf27a57208728eb0e4c69d8cd58551f254a11",
+      "workspace_cleaned": true
+    },
+    "execution": {
+      "child_intent_count": 2,
+      "child_receipt_count": 1,
+      "fill_count": 2,
+      "parent_order_count": 2,
+      "platform_preflight": "PASS",
+      "pretrade_status": "PREPARED"
+    },
+    "execution_binding": "SHADOW_RECONCILED_NOT_PRIMARY_EXECUTION",
+    "execution_conformance": {
+      "adapter_reproduction_all_passed": true,
+      "authority_mapping": false
+    },
+    "formal_admission_eligible": false,
+    "formal_forward_evidence": false,
+    "idempotency": {
+      "activation": true,
+      "conflict_rejected": true,
+      "execution_batch": true,
+      "signal_batch": true,
+      "valuation_batch": true
+    },
+    "ledger": {
+      "cash": 30000.0,
+      "checkpoint_count": 4,
+      "equity": 96500.0,
+      "mark_to_market_pnl": -3500.0,
+      "positions": {
+        "510300": 3500,
+        "518880": 3500
+      },
+      "reconciliation_ok": true,
+      "recovery_read_only": false
+    },
+    "live_order_capability_exposed": false,
+    "network": "POISONED",
+    "network_accessed": false,
+    "network_isolation_scope": "FRESH_CLI_NEW_CONNECTIONS_AND_SUBPROCESSES",
+    "ok": true,
+    "platform_durability_certified": false,
+    "preexisting_socket_handles_covered": false,
+    "promotion_eligible": false,
+    "qmt_compat": {
+      "adapter_id": "qmt-compat-sandbox",
+      "atomic_snapshot": {
+        "callback_cut": 12,
+        "connected": true,
+        "connection_epoch": 1,
+        "degraded": false,
+        "event_cut": {
+          "config_sha256": "e9bea1f2f87f7dab5ff75c5c773fe142bead7d6b680abed1c09ba21ea1be3e5a",
+          "event_sha256": "85f67422baf6481bdbc9d37633f45d55ca5c15399b75f0741a54d8fd400cef4a",
+          "sequence": 23
+        }
+      },
+      "callback_count": 12,
+      "cancel_scenario": "CANCELLED",
+      "daily_usage": {
+        "conservative": true,
+        "notional": "72000",
+        "order_count": 4
+      },
+      "disconnect_reconnect_exercised": true,
+      "duplicate_callback_idempotent": true,
+      "execution_binding": "SHADOW_RECONCILED_NOT_PRIMARY_EXECUTION",
+      "ledger_reconciled": true,
+      "live_submit_rejected_without_write": true,
+      "main_fill_quantity_by_code": {
+        "510300": 3500,
+        "518880": 3500
+      },
+      "main_filled_order_count": 2,
+      "main_parent_count": 2,
+      "out_of_order_buffer_count": 2,
+      "real_orders": false,
+      "reject_scenario": "REJECTED",
+      "restart_recovered_without_resubmit": true,
+      "sandbox_adapter_exercised": true
+    },
+    "qmt_runtime_accessed": false,
+    "qmt_vendor_certified": false,
+    "real_broker_accessed": false,
+    "real_orders": false,
+    "risk": {
+      "compliant": true,
+      "decision": "PASS",
+      "mode": "NORMAL"
+    },
+    "sandbox_adapter_exercised": true,
+    "schema": "vibe-research/offline-paper-demo-result/v1",
+    "signal": {
+      "eligible_risk_group_count": 2,
+      "signal_sha256": "082cc5caf5ef18a683b35550729e32a0cfeefcdbdb3595fa1f2bcb114431766b",
+      "target_codes": [
+        "510300",
+        "518880"
+      ],
+      "target_weights": {
+        "510300": 0.35,
+        "518880": 0.35
+      }
+    },
+    "strategy": {
+      "engine_id": "quant-platform/diversified-etf-trend/v1",
+      "engine_reuse_only": true,
+      "source_candidate_status": "FALSIFIED_REDESIGN_REQUIRED",
+      "strategy_id": "demo-only-etf-trend-v1"
+    },
+    "timeline": {
+      "execute_date": "2026-08-03",
+      "signal_date": "2026-07-31",
+      "valuation_date": "2026-08-04"
+    },
+    "workspace_cleaned": true,
+    "xtquant_imported": false
+  }
+}
