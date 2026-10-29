@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "policy_id": "quant-platform/research-governance/v1",
+  "append_only_registry": true,
+  "reserve_every_attempt_before_execution": true,
+  "record_failed_and_interrupted_attempts": true,
+  "completed_run_requires_archived_artifact": true,
+  "completed_run_recomputes_manifest_and_output_hashes": true,
+  "completed_run_requires_canonical_engine_replay": true,
+  "completed_run_requires_frozen_holdout_robustness": true,
+  "completed_run_must_match_registered_data_code_parameters_and_execution_semantics": true,
+  "completed_run_requires_factor_fixture_attestation": true,
+  "factor_attestation_reproduced_by_canonical_engine": true,
+  "factor_validation_required_checks": [
+    "HAND_COMPUTED_EXPECTATIONS",
+    "DETERMINISTIC_REPLAY",
+    "INPUT_ORDER_INVARIANCE",
+    "TEMPORAL_PREFIX_INVARIANCE",
+    "CROSS_ASSET_ISOLATION",
+    "INSUFFICIENT_HISTORY_NULL",
+    "NON_FINITE_INPUT_REJECTED"
+  ],
+  "single_variable_ablation_plan_required": true,
+  "all_predeclared_variants_attempted_before_seal": true,
+  "baseline_must_complete_before_seal": true,
+  "interaction_variants_require_new_experiment_id": true,
+  "completed_run_requires_reproducible_hac_statistics": true,
+  "statistical_sample_scope": "FROZEN_HOLDOUT_OUT_OF_SAMPLE",
+  "holm_bonferroni_required_for_complete_predeclared_family": true,
+  "selected_hypothesis_must_survive_multiplicity_correction": true,
+  "parameter_surface_minimum_levels": 3,
+  "selected_parameter_requires_neighbor_support": true,
+  "parameter_space_frozen_before_first_attempt": true,
+  "acceptance_criteria_frozen_before_first_attempt": true,
+  "purged_walk_forward_required_for_historical_promotion": true,
+  "sample_time_fields": [
+    "feature_time",
+    "available_at",
+    "label_start",
+    "label_end",
+    "trade_time"
+  ],
+  "adversarial_audit": {
+    "required_before_lockbox": true,
+    "reviewer_must_differ_from_researcher": true,
+    "passing_report_may_not_contain_failed_checks": true,
+    "required_checks": [
+      "DATA_TIME_AND_REVISION_LINEAGE",
+      "SAMPLE_LEAKAGE_AND_PURGING",
+      "COMPLETE_EXPERIMENT_COUNT",
+      "EXECUTION_AND_COST_STRESS",
+      "NEGATIVE_CONTROLS_AND_ABLATIONS",
+      "FAILURE_CONDITIONS_AND_KILL_CRITERIA"
+    ]
+  },
+  "lockbox_maximum_opens": 1,
+  "post_lockbox_parameter_changes_require_new_experiment_id": true,
+  "historical_gate_may_be_replaced_by_strict_forward_only_validation": true,
+  "independent_adversarial_audit_required_before_paper_completion": true,
+  "real_orders": false
+}
