@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quant-core/parent-fill-allocation/v2",
+  "type": "object",
+  "required": [
+    "schema",
+    "allocation_sequence",
+    "previous_fill_allocation_sha256",
+    "allocation_plan_sha256",
+    "parent_order_id",
+    "broker_order_id",
+    "as_of_time",
+    "status",
+    "filled_quantity",
+    "average_price",
+    "fee_fen",
+    "child_allocations",
+    "incremental_child_allocations",
+    "unfilled_quantity",
+    "real_orders",
+    "fill_allocation_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "quant-core/parent-fill-allocation/v2"},
+    "allocation_sequence": {"type": "integer", "minimum": 1},
+    "previous_fill_allocation_sha256": {
+      "anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+    },
+    "allocation_plan_sha256": {"$ref": "#/$defs/sha256"},
+    "parent_order_id": {"type": "string", "minLength": 1},
+    "broker_order_id": {"type": "string", "minLength": 1, "maxLength": 160},
+    "as_of_time": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["OPEN", "PARTIALLY_FILLED", "FILLED", "CANCELLED"]},
+    "filled_quantity": {"type": "integer", "minimum": 0},
+    "average_price": {
+      "anyOf": [{"$ref": "#/$defs/positiveDecimal"}, {"type": "null"}]
+    },
+    "fee_fen": {"type": "integer", "minimum": 0},
+    "child_allocations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["intent_id", "strategy_id", "quantity", "average_price", "fee_fen"],
+        "properties": {
+          "intent_id": {"type": "string", "minLength": 1},
+          "strategy_id": {"type": "string", "minLength": 1},
+          "quantity": {"type": "integer", "minimum": 1},
+        "average_price": {"$ref": "#/$defs/positiveDecimal"},
+          "fee_fen": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    },
+    "incremental_child_allocations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["intent_id", "strategy_id", "quantity", "average_price", "fee_fen"],
+        "properties": {
+          "intent_id": {"type": "string", "minLength": 1},
+          "strategy_id": {"type": "string", "minLength": 1},
+          "quantity": {"type": "integer", "minimum": 0},
+          "average_price": {
+            "anyOf": [{"$ref": "#/$defs/positiveDecimal"}, {"type": "null"}]
+          },
+          "fee_fen": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    },
+    "unfilled_quantity": {"type": "integer", "minimum": 0},
+    "real_orders": {"type": "boolean"},
+    "fill_allocation_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "positiveDecimal": {
+      "type": "string",
+      "pattern": "^(?:0*[1-9][0-9]*(?:\\.[0-9]+)?|0*\\.[0-9]*[1-9][0-9]*)$"
+    }
+  }
+}
