@@ -1,0 +1,174 @@
+{
+  "$defs": {
+    "callback": {
+      "additionalProperties": false,
+      "properties": {
+        "alias": {
+          "enum": [
+            "cancel_scenario",
+            "parent_510300",
+            "parent_518880",
+            "reject_scenario"
+          ],
+          "type": "string"
+        },
+        "error_id": {
+          "type": "string"
+        },
+        "error_msg": {
+          "type": "string"
+        },
+        "order_status": {
+          "enum": [
+            "ACCEPTED",
+            "CANCELLED",
+            "FILLED",
+            "PARTIAL"
+          ],
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "sequence": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "session": {
+          "type": "string"
+        },
+        "trade_id": {
+          "type": "string"
+        },
+        "traded_price": {
+          "type": "string"
+        },
+        "traded_volume": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "disconnect",
+            "order",
+            "order_error",
+            "reconnect",
+            "trade"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "sequence",
+        "type"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "$id": "https://schemas.vibe-research.local/qmt-compat-sandbox-fixture-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authoritative_for_execution": {
+      "const": false,
+      "type": "boolean"
+    },
+    "broker": {
+      "const": "QMT_COMPAT_SANDBOX",
+      "type": "string"
+    },
+    "callbacks": {
+      "items": {
+        "$ref": "#/$defs/callback"
+      },
+      "maxItems": 12,
+      "minItems": 12,
+      "type": "array"
+    },
+    "certification_status": {
+      "const": "NOT_RUN_REAL_QMT",
+      "type": "string"
+    },
+    "classification": {
+      "const": "DEMO_ONLY_NOT_FORMAL_EVIDENCE",
+      "type": "string"
+    },
+    "demo_authority": {
+      "const": false,
+      "type": "boolean"
+    },
+    "execution_binding": {
+      "const": "SHADOW_RECONCILED_NOT_PRIMARY_EXECUTION",
+      "type": "string"
+    },
+    "fixture_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "formal_admission_eligible": {
+      "const": false,
+      "type": "boolean"
+    },
+    "formal_forward_evidence": {
+      "const": false,
+      "type": "boolean"
+    },
+    "promotion_eligible": {
+      "const": false,
+      "type": "boolean"
+    },
+    "qmt_runtime_accessed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "qmt_vendor_certified": {
+      "const": false,
+      "type": "boolean"
+    },
+    "real_broker_accessed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "real_orders": {
+      "const": false,
+      "type": "boolean"
+    },
+    "recorded_at": {
+      "const": "2026-08-03T09:30:00+08:00",
+      "format": "date-time",
+      "type": "string"
+    },
+    "schema": {
+      "const": "vibe-research/qmt-compat-sandbox-fixture/v1",
+      "type": "string"
+    },
+    "xtquant_imported": {
+      "const": false,
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "authoritative_for_execution",
+    "broker",
+    "callbacks",
+    "certification_status",
+    "classification",
+    "demo_authority",
+    "execution_binding",
+    "fixture_sha256",
+    "formal_admission_eligible",
+    "formal_forward_evidence",
+    "promotion_eligible",
+    "qmt_runtime_accessed",
+    "qmt_vendor_certified",
+    "real_broker_accessed",
+    "real_orders",
+    "recorded_at",
+    "schema",
+    "xtquant_imported"
+  ],
+  "type": "object"
+}

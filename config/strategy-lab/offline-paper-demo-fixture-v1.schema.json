@@ -1,0 +1,319 @@
+{
+  "$defs": {
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "universe_item": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "159915",
+            "510300",
+            "510500",
+            "511010",
+            "518880"
+          ],
+          "type": "string"
+        },
+        "correlation_cluster": {
+          "enum": [
+            "CN_RISK",
+            "DEFENSIVE_RATES",
+            "REAL_ASSET"
+          ],
+          "type": "string"
+        },
+        "exchange": {
+          "enum": [
+            "XSHG",
+            "XSHE"
+          ],
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "risk_group": {
+          "enum": [
+            "bond",
+            "china_equity",
+            "gold"
+          ],
+          "type": "string"
+        },
+        "sector": {
+          "enum": [
+            "ALTERNATIVE",
+            "CN_EQUITY",
+            "FIXED_INCOME"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "correlation_cluster",
+        "exchange",
+        "name",
+        "risk_group",
+        "sector"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://schemas.vibe-research.local/offline-paper-demo-fixture-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authoritative_for_execution": {
+      "const": false,
+      "type": "boolean"
+    },
+    "classification": {
+      "const": "DEMO_ONLY_NOT_FORMAL_EVIDENCE",
+      "type": "string"
+    },
+    "compatibility_snapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "execution_model_gzip_base64": {
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9+/]+={0,2}$",
+          "type": "string"
+        },
+        "execution_model_gzip_sha256": {
+          "const": "c8d38a88a268a33206425f8f8a182cdcd0a2b2e1952802fb4f2c67fc96ec6051",
+          "type": "string"
+        },
+        "execution_model_sha256": {
+          "const": "c4b4d07865835b5d5282f8cc4489239ef92e415d076a5fa3373ff52543d8ead1",
+          "type": "string"
+        },
+        "source_repository_head": {
+          "const": "46c63eccf4c3d918fd96b517b33c83358260bbe3",
+          "type": "string"
+        }
+      },
+      "required": [
+        "execution_model_gzip_base64",
+        "execution_model_gzip_sha256",
+        "execution_model_sha256",
+        "source_repository_head"
+      ],
+      "type": "object"
+    },
+    "demo_authority": {
+      "const": false,
+      "type": "boolean"
+    },
+    "fixture_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "formal_admission_eligible": {
+      "const": false,
+      "type": "boolean"
+    },
+    "formal_forward_evidence": {
+      "const": false,
+      "type": "boolean"
+    },
+    "market": {
+      "additionalProperties": false,
+      "properties": {
+        "execution_close": {
+          "const": 10,
+          "type": "number"
+        },
+        "execution_open": {
+          "const": 10,
+          "type": "number"
+        },
+        "signal_close": {
+          "const": 10,
+          "type": "number"
+        },
+        "valuation_close": {
+          "const": 9.5,
+          "type": "number"
+        },
+        "volume": {
+          "const": 1000000,
+          "type": "number"
+        }
+      },
+      "required": [
+        "execution_close",
+        "execution_open",
+        "signal_close",
+        "valuation_close",
+        "volume"
+      ],
+      "type": "object"
+    },
+    "promotion_eligible": {
+      "const": false,
+      "type": "boolean"
+    },
+    "real_orders": {
+      "const": false,
+      "type": "boolean"
+    },
+    "schema": {
+      "const": "vibe-research/offline-paper-demo-fixture/v1",
+      "type": "string"
+    },
+    "strategy": {
+      "additionalProperties": false,
+      "properties": {
+        "daily_returns": {
+          "additionalProperties": false,
+          "properties": {
+            "159915": {
+              "const": 0.002,
+              "type": "number"
+            },
+            "510300": {
+              "const": 0.003,
+              "type": "number"
+            },
+            "510500": {
+              "const": 0.001,
+              "type": "number"
+            },
+            "511010": {
+              "const": 0,
+              "type": "number"
+            },
+            "518880": {
+              "const": 0.0015,
+              "type": "number"
+            }
+          },
+          "required": [
+            "159915",
+            "510300",
+            "510500",
+            "511010",
+            "518880"
+          ],
+          "type": "object"
+        },
+        "engine_reuse_only": {
+          "const": true,
+          "type": "boolean"
+        },
+        "initial_cash": {
+          "const": 100000,
+          "type": "number"
+        },
+        "source_candidate_status": {
+          "const": "FALSIFIED_REDESIGN_REQUIRED",
+          "type": "string"
+        },
+        "strategy_id": {
+          "const": "demo-only-etf-trend-v1",
+          "type": "string"
+        },
+        "universe": {
+          "items": {
+            "$ref": "#/$defs/universe_item"
+          },
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "daily_returns",
+        "engine_reuse_only",
+        "initial_cash",
+        "source_candidate_status",
+        "strategy_id",
+        "universe"
+      ],
+      "type": "object"
+    },
+    "timeline": {
+      "additionalProperties": false,
+      "properties": {
+        "approved_at": {
+          "const": "2026-07-30T15:30:00+08:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "execute_date": {
+          "const": "2026-08-03",
+          "format": "date",
+          "type": "string"
+        },
+        "execute_recorded_at": {
+          "const": "2026-08-03T15:30:00+08:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "initialized_at": {
+          "const": "2026-07-30T16:00:00+08:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "signal_date": {
+          "const": "2026-07-31",
+          "format": "date",
+          "type": "string"
+        },
+        "signal_generated_at": {
+          "const": "2026-07-31T15:10:00+08:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "signal_recorded_at": {
+          "const": "2026-07-31T15:30:00+08:00",
+          "format": "date-time",
+          "type": "string"
+        },
+        "valuation_date": {
+          "const": "2026-08-04",
+          "format": "date",
+          "type": "string"
+        },
+        "valuation_recorded_at": {
+          "const": "2026-08-04T15:30:00+08:00",
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "approved_at",
+        "execute_date",
+        "execute_recorded_at",
+        "initialized_at",
+        "signal_date",
+        "signal_generated_at",
+        "signal_recorded_at",
+        "valuation_date",
+        "valuation_recorded_at"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "authoritative_for_execution",
+    "classification",
+    "compatibility_snapshot",
+    "demo_authority",
+    "fixture_sha256",
+    "formal_admission_eligible",
+    "formal_forward_evidence",
+    "market",
+    "promotion_eligible",
+    "real_orders",
+    "schema",
+    "strategy",
+    "timeline"
+  ],
+  "type": "object"
+}

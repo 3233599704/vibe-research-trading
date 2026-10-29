@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quant-platform/pretrade-execution-batch/v2",
+  "type": "object",
+  "required": [
+    "schema",
+    "trade_date",
+    "recorded_at",
+    "batch_request_sha256",
+    "platform_preflight_sha256",
+    "child_receipts",
+    "parent_order_allocation_plan",
+    "prepared_portfolio_assessment",
+    "prepared_stress_assessment",
+    "effective_decision",
+    "blockers",
+    "status",
+    "real_orders",
+    "pretrade_batch_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "quant-platform/pretrade-execution-batch/v2"},
+    "trade_date": {"type": "string", "format": "date"},
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "batch_request_sha256": {"$ref": "#/$defs/sha256"},
+    "platform_preflight_sha256": {"$ref": "#/$defs/sha256"},
+    "child_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "schema": {"const": "quant-core/pretrade-child-execution-receipt/v1"},
+          "receipt_sha256": {"$ref": "#/$defs/sha256"}
+        },
+        "required": ["schema", "receipt_sha256"]
+      }
+    },
+    "parent_order_allocation_plan": {
+      "type": "object",
+      "properties": {
+        "schema": {"const": "quant-core/parent-order-allocation-plan/v1"},
+        "allocation_plan_sha256": {"$ref": "#/$defs/sha256"},
+        "real_orders": {"const": false}
+      },
+      "required": ["schema", "allocation_plan_sha256", "real_orders"]
+    },
+    "prepared_portfolio_assessment": {
+      "type": "object",
+      "properties": {
+        "schema": {"const": "quant-platform/platform-portfolio-assessment/v2"},
+        "decision": {"enum": ["PASS", "REDUCE_ONLY", "MONITOR_ONLY"]},
+        "assessment_sha256": {"$ref": "#/$defs/sha256"},
+        "real_orders": {"const": false}
+      },
+      "required": ["schema", "decision", "assessment_sha256", "real_orders"]
+    },
+    "prepared_stress_assessment": {
+      "type": "object",
+      "properties": {
+        "schema": {"const": "quant-platform/portfolio-stress-assessment/v2"},
+        "decision": {"enum": ["PASS", "REDUCE_ONLY", "MONITOR_ONLY"]},
+        "assessment_sha256": {"$ref": "#/$defs/sha256"},
+        "real_orders": {"const": false}
+      },
+      "required": ["schema", "decision", "assessment_sha256", "real_orders"]
+    },
+    "effective_decision": {"enum": ["PASS", "REDUCE_ONLY", "MONITOR_ONLY"]},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "status": {"const": "PREPARED"},
+    "real_orders": {"const": false},
+    "pretrade_batch_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quant-platform/execution-conformance-report/v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "contract_id",
+    "contract_sha256",
+    "inputs",
+    "real_orders",
+    "adapters",
+    "summaries",
+    "common_passed",
+    "canonical_eligible",
+    "promotion_eligible",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "quant-platform/execution-conformance-report/v1"},
+    "contract_id": {"const": "quant-platform/execution-semantics/v1"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "inputs": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"$ref": "#/$defs/sha256"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "real_orders": {"const": false},
+    "adapters": {
+      "type": "object",
+      "required": ["quant_core", "platform_native_research"],
+      "properties": {
+        "quant_core": {"$ref": "#/$defs/results"},
+        "platform_native_research": {"$ref": "#/$defs/results"}
+      },
+      "additionalProperties": false
+    },
+    "summaries": {
+      "type": "object",
+      "required": ["quant_core", "platform_native_research"],
+      "properties": {
+        "quant_core": {"$ref": "#/$defs/summary"},
+        "platform_native_research": {"$ref": "#/$defs/summary"}
+      },
+      "additionalProperties": false
+    },
+    "common_passed": {"type": "array", "items": {"type": "string"}},
+    "canonical_eligible": {"const": true},
+    "promotion_eligible": {"type": "boolean"},
+    "report_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "result": {
+      "type": "object",
+      "required": ["status", "evidence"],
+      "properties": {
+        "status": {"enum": ["PASS", "FAIL"]},
+        "evidence": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "results": {
+      "type": "object",
+      "minProperties": 13,
+      "additionalProperties": {"$ref": "#/$defs/result"}
+    },
+    "summary": {
+      "type": "object",
+      "required": ["passed", "required", "all_required_scenarios_pass"],
+      "properties": {
+        "passed": {"type": "integer", "minimum": 0},
+        "required": {"const": 13},
+        "all_required_scenarios_pass": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

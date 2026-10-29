@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quant-core/pretrade-child-execution-receipt/v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "strategy_id",
+    "trade_date",
+    "recorded_at",
+    "signal_sha256",
+    "market_manifest_sha256",
+    "platform_preflight_sha256",
+    "source_checkpoint_sha256",
+    "source_snapshot_sha256",
+    "planned_rebalance",
+    "planned_fills",
+    "planned_reconciliation",
+    "planned_equity",
+    "planned_cash",
+    "planned_positions_notional",
+    "planned_snapshot_sha256",
+    "real_orders",
+    "receipt_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "quant-core/pretrade-child-execution-receipt/v1"},
+    "strategy_id": {"$ref": "#/$defs/id"},
+    "trade_date": {"type": "string", "format": "date"},
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "signal_sha256": {"$ref": "#/$defs/sha256"},
+    "market_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "platform_preflight_sha256": {"$ref": "#/$defs/sha256"},
+    "source_checkpoint_sha256": {"$ref": "#/$defs/sha256"},
+    "source_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+    "planned_rebalance": {
+      "type": "object",
+      "required": ["cost", "turnover"],
+      "properties": {
+        "cost": {"type": "number", "minimum": 0},
+        "turnover": {"type": "number", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "planned_fills": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/fill"}
+    },
+    "planned_reconciliation": {
+      "type": "object",
+      "required": ["date", "ok"],
+      "properties": {
+        "date": {"type": "string", "format": "date"},
+        "ok": {"const": true}
+      },
+      "additionalProperties": true
+    },
+    "planned_equity": {"$ref": "#/$defs/positiveDecimal"},
+    "planned_cash": {"$ref": "#/$defs/nonnegativeDecimal"},
+    "planned_positions_notional": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/positiveDecimal"}
+    },
+    "planned_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+    "real_orders": {"const": false},
+    "receipt_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"},
+    "symbol": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,31}$"},
+    "positiveDecimal": {"type": "string", "pattern": "^(?:0*[1-9][0-9]*|0*\\.[0-9]*[1-9][0-9]*)$"},
+    "nonnegativeDecimal": {"type": "string", "pattern": "^(?:0|0*[1-9][0-9]*|0*\\.[0-9]*[1-9][0-9]*)$"},
+    "fill": {
+      "type": "object",
+      "required": [
+        "id", "order_id", "signal_date", "date", "side", "code", "name",
+        "quantity", "price", "reference_price", "notional", "commission",
+        "stamp_tax", "transfer_fee", "cost", "slippage_cost", "status",
+        "fee_policy_id"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "order_id": {"$ref": "#/$defs/id"},
+        "signal_date": {"type": "string", "format": "date"},
+        "date": {"type": "string", "format": "date"},
+        "side": {"enum": ["buy", "sell"]},
+        "code": {"$ref": "#/$defs/symbol"},
+        "name": {"type": "string"},
+        "quantity": {"type": "integer", "minimum": 1},
+        "price": {"type": "number", "exclusiveMinimum": 0},
+        "reference_price": {"type": "number", "exclusiveMinimum": 0},
+        "notional": {"type": "number", "minimum": 0},
+        "commission": {"type": "number", "minimum": 0},
+        "stamp_tax": {"type": "number", "minimum": 0},
+        "transfer_fee": {"type": "number", "minimum": 0},
+        "cost": {"type": "number", "minimum": 0},
+        "slippage_cost": {"type": "number", "minimum": 0},
+        "status": {"enum": ["FILLED", "PARTIALLY_FILLED"]},
+        "fee_policy_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}
