@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "contract_id": "quant-platform/execution-semantics/v1",
+  "real_orders": false,
+  "canonical_adapter_id": "quant_core",
+  "canonical_adapter_path": "apps/Vibe-Research/backend/quant_core/execution.py",
+  "new_strategy_runs_must_use_canonical_adapter": true,
+  "legacy_results_may_only_be_reproduced_not_promoted": true,
+  "canonical_timeline": [
+    "signal_created_after_market_close",
+    "order_created_for_next_trading_session",
+    "sell_orders_processed_before_buy_orders",
+    "fills_use_next_session_reference_price_plus_explicit_slippage",
+    "cash_positions_lots_fees_and_events_updated_atomically",
+    "end_of_session_reconciliation_must_pass"
+  ],
+  "canonical_order_states": [
+    "PENDING",
+    "FILLED",
+    "PARTIALLY_FILLED",
+    "REJECTED",
+    "SUSPENDED",
+    "LIMIT_LOCKED",
+    "CANCELLED"
+  ],
+  "required_cost_fields": [
+    "commission",
+    "minimum_commission",
+    "stamp_tax",
+    "transfer_fee",
+    "slippage",
+    "effective_date",
+    "policy_version",
+    "policy_sha256"
+  ],
+  "required_scenarios": [
+    {
+      "id": "NEXT_OPEN_NO_SAME_BAR_FILL",
+      "requirement": "收盘后信号不得使用同一根 K 线成交。"
+    },
+    {
+      "id": "T1_SAME_DAY_SELL_BLOCKED",
+      "requirement": "A 股当日买入的数量不得在同一交易日卖出。"
+    },
+    {
+      "id": "SUSPENDED_ORDER_RETRY",
+      "requirement": "停牌订单保持可追溯状态，按策略选择重试或取消，不得静默消失。"
+    },
+    {
+      "id": "LIMIT_UP_BUY_AND_LIMIT_DOWN_SELL",
+      "requirement": "按板块、ST、上市初期和规则生效日期判断涨跌停锁单。"
+    },
+    {
+      "id": "PARTIAL_FILL_AND_VOLUME_CAPACITY",
+      "requirement": "成交量容量不足时部分成交，剩余数量与重试状态可审计。"
+    },
+    {
+      "id": "LOT_AND_ODD_LOT_RULES",
+      "requirement": "买入手数、各板块最小数量及清仓零股规则一致。"
+    },
+    {
+      "id": "DATED_FEE_SCHEDULE",
+      "requirement": "佣金、印花税、过户费和滑点按交易日对应的版本化费率计算。"
+    },
+    {
+      "id": "CASH_AND_POSITION_RISK_LIMITS",
+      "requirement": "现金储备、单标的权重、最大持仓数和不可透支约束必须在成交前执行。"
+    },
+    {
+      "id": "CORPORATE_ACTION_FAIL_CLOSED",
+      "requirement": "未支持的分红、拆并股、换股和退市事件必须阻断执行并显式报警。"
+    },
+    {
+      "id": "MISSING_MARK_FAIL_CLOSED",
+      "requirement": "持仓缺少估值价格时不得沿用未知陈旧值完成正常对账。"
+    },
+    {
+      "id": "TERMINAL_LIQUIDATION_VALUATION",
+      "requirement": "期末市值权益与假设清算后权益必须分别披露。"
+    },
+    {
+      "id": "DOUBLE_ENTRY_RECONCILIATION",
+      "requirement": "现金、持仓、成交、费用、已实现盈亏和事件流必须每日守恒。"
+    },
+    {
+      "id": "IDEMPOTENT_REPLAY",
+      "requirement": "相同信号、数据版本和配置重复运行必须产生相同订单 ID 与账本摘要。"
+    }
+  ],
+  "adapters": [
+    {
+      "id": "quant_core",
+      "path": "apps/Vibe-Research/backend/quant_core/execution.py",
+      "status": "CONFORMANT",
+      "role": "CANONICAL_FOR_ALL_NEW_RESEARCH_AND_FORWARD_SIMULATION",
+      "new_runs_allowed": true,
+      "known_gaps": []
+    },
+    {
+      "id": "platform_native_research",
+      "path": "research/platform-native-strategy/tools/execution_model.py",
+      "status": "LEGACY_REPRODUCTION_ONLY",
+      "role": "LEGACY_REPRODUCTION_AND_EXISTING_RESEARCH_SHADOW_CONTINUITY",
+      "new_runs_allowed": false,
+      "promotion_allowed": false,
+      "known_gaps": [
+        "shared_persistent_event_store",
+        "shared_schema_and_ids_with_quant_core",
+        "canonical_formal_evidence_lane"
+      ]
+    }
+  ],
+  "promotion_gate": {
+    "canonical_adapter_required": true,
+    "canonical_adapter_all_required_scenarios_pass": true,
+    "legacy_adapters_promotion_allowed": false,
+    "zero_unexplained_cash_difference": true,
+    "zero_unexplained_position_difference": true,
+    "golden_report_sha256_required": true,
+    "registration_requires_fresh_replay": true
+  }
+}
