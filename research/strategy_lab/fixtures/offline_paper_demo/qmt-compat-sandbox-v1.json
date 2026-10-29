@@ -1,0 +1,104 @@
+{
+  "authoritative_for_execution": false,
+  "broker": "QMT_COMPAT_SANDBOX",
+  "callbacks": [
+    {
+      "alias": "parent_510300",
+      "order_status": "ACCEPTED",
+      "sequence": 1,
+      "traded_volume": 0,
+      "type": "order"
+    },
+    {
+      "alias": "parent_510300",
+      "order_status": "PARTIAL",
+      "sequence": 3,
+      "traded_volume": 1750,
+      "type": "order"
+    },
+    {
+      "alias": "parent_510300",
+      "sequence": 2,
+      "trade_id": "qmt-fixture-trade-510300-a",
+      "traded_price": "10",
+      "traded_volume": 1750,
+      "type": "trade"
+    },
+    {
+      "alias": "parent_510300",
+      "sequence": 4,
+      "trade_id": "qmt-fixture-trade-510300-b",
+      "traded_price": "10",
+      "traded_volume": 1750,
+      "type": "trade"
+    },
+    {
+      "alias": "parent_510300",
+      "order_status": "FILLED",
+      "sequence": 5,
+      "traded_volume": 3500,
+      "type": "order"
+    },
+    {
+      "alias": "parent_518880",
+      "sequence": 7,
+      "trade_id": "qmt-fixture-trade-518880-a",
+      "traded_price": "10",
+      "traded_volume": 3500,
+      "type": "trade"
+    },
+    {
+      "alias": "parent_518880",
+      "order_status": "ACCEPTED",
+      "sequence": 6,
+      "traded_volume": 0,
+      "type": "order"
+    },
+    {
+      "alias": "parent_518880",
+      "order_status": "FILLED",
+      "sequence": 8,
+      "traded_volume": 3500,
+      "type": "order"
+    },
+    {
+      "reason": "offline-fixture-disconnect",
+      "sequence": 9,
+      "type": "disconnect"
+    },
+    {
+      "sequence": 10,
+      "session": "offline-fixture-reconnect",
+      "type": "reconnect"
+    },
+    {
+      "alias": "cancel_scenario",
+      "order_status": "CANCELLED",
+      "sequence": 11,
+      "traded_volume": 0,
+      "type": "order"
+    },
+    {
+      "alias": "reject_scenario",
+      "error_id": "DEFINITE_OFFLINE_REJECT",
+      "error_msg": "frozen QMT compatibility rejection",
+      "sequence": 12,
+      "type": "order_error"
+    }
+  ],
+  "certification_status": "NOT_RUN_REAL_QMT",
+  "classification": "DEMO_ONLY_NOT_FORMAL_EVIDENCE",
+  "demo_authority": false,
+  "execution_binding": "SHADOW_RECONCILED_NOT_PRIMARY_EXECUTION",
+  "fixture_sha256": "3ab0832ae052646d51ff89abdd058db246486e7f1c90fe7c2e42ab9c8cb417c1",
+  "formal_admission_eligible": false,
+  "formal_forward_evidence": false,
+  "promotion_eligible": false,
+  "qmt_runtime_accessed": false,
+  "qmt_vendor_certified": false,
+  "real_broker_accessed": false,
+  "real_orders": false,
+  "recorded_at": "2026-08-03T09:30:00+08:00",
+  "schema": "vibe-research/qmt-compat-sandbox-fixture/v1",
+  "xtquant_imported": false
+}
