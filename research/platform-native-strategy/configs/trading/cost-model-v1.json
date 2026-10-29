@@ -1,0 +1,26 @@
+{
+  "commission_rate": 0.0003,
+  "minimum_commission": 5,
+  "slippage_rate": 0.0005,
+  "stamp_tax_schedule": [
+    {
+      "effective_date": "1900-01-01",
+      "rate": 0.001
+    },
+    {
+      "effective_date": "2023-08-28",
+      "rate": 0.0005
+    }
+  ],
+  "transfer_fee_schedule": [
+    {
+      "effective_date": "1900-01-01",
+      "rate": 2e-05
+    },
+    {
+      "effective_date": "2022-04-29",
+      "rate": 1e-05
+    }
+  ],
+  "version": "a-share-cost-v1"
+}

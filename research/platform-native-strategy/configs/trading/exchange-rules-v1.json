@@ -1,0 +1,115 @@
+{
+  "lot_rules": {
+    "beijing": {
+      "increment": 1,
+      "minimum": 100
+    },
+    "chinext": {
+      "increment": 100,
+      "minimum": 100
+    },
+    "main": {
+      "increment": 100,
+      "minimum": 100
+    },
+    "star": {
+      "increment": 1,
+      "minimum": 200
+    }
+  },
+  "no_initial_limit": {
+    "beijing": {
+      "effective_date": "2021-11-15",
+      "trading_days": 1
+    },
+    "chinext": {
+      "effective_date": "2020-08-24",
+      "trading_days": 5
+    },
+    "main": {
+      "effective_date": "2023-04-10",
+      "trading_days": 5
+    },
+    "star": {
+      "effective_date": "2019-07-22",
+      "trading_days": 5
+    }
+  },
+  "price_limits": {
+    "beijing": {
+      "normal": [
+        {
+          "effective_date": "2021-11-15",
+          "rate": 0.3
+        }
+      ],
+      "st": [
+        {
+          "effective_date": "2021-11-15",
+          "rate": 0.3
+        }
+      ]
+    },
+    "chinext": {
+      "normal": [
+        {
+          "effective_date": "1900-01-01",
+          "rate": 0.1
+        },
+        {
+          "effective_date": "2020-08-24",
+          "rate": 0.2
+        }
+      ],
+      "st": [
+        {
+          "effective_date": "1900-01-01",
+          "rate": 0.05
+        },
+        {
+          "effective_date": "2020-08-24",
+          "rate": 0.2
+        }
+      ]
+    },
+    "main": {
+      "normal": [
+        {
+          "effective_date": "1900-01-01",
+          "rate": 0.1
+        }
+      ],
+      "st": [
+        {
+          "effective_date": "1900-01-01",
+          "rate": 0.05
+        },
+        {
+          "effective_date": "2026-07-06",
+          "rate": 0.1
+        }
+      ]
+    },
+    "star": {
+      "normal": [
+        {
+          "effective_date": "2019-07-22",
+          "rate": 0.2
+        }
+      ],
+      "st": [
+        {
+          "effective_date": "2019-07-22",
+          "rate": 0.2
+        }
+      ]
+    }
+  },
+  "sources": [
+    "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260424_10816474.shtml",
+    "https://www.szse.cn/lawrules/service/member/t20260630_621404.html",
+    "https://www.szse.cn/aboutus/trends/news/t20200821_580924.html",
+    "https://www.bse.cn/important_news/200010675.html"
+  ],
+  "version": "a-share-exchange-rules-v1"
+}
