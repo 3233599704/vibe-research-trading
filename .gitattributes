@@ -1,0 +1,18 @@
+* text=auto eol=lf
+# Frozen fixture payload is audited byte-for-byte, including its CRLF bytes.
+research/platform-native-strategy/tools/execution_model.py -text
+config/strategy-lab/offline-paper-demo-fixture-v1.schema.json text eol=lf
+config/strategy-lab/qmt-compat-sandbox-fixture-v1.schema.json text eol=lf
+docs/strategy_lab/QMT_COMPAT_SANDBOX_DEMO.md text eol=lf
+research/strategy_lab/offline_paper_demo.py text eol=lf
+research/strategy_lab/test/test_offline_paper_demo.py text eol=lf
+scripts/offline-paper-demo.py text eol=lf
+tests/test_offline_paper_demo_cli.py text eol=lf
+config/broker/parent-order-allocation-plan.schema.json text eol=lf
+config/broker/parent-fill-allocation.schema.json text eol=lf
+config/strategy-lab/pretrade-child-execution-receipt.schema.json text eol=lf
+config/strategy-lab/pretrade-execution-batch.schema.json text eol=lf
+config/research/research-governance-policy-v1.json text eol=lf
+scripts/execution-conformance.py text eol=lf
+config/execution-semantics-v1.json text eol=lf
+config/strategy-lab/execution-conformance-report.schema.json text eol=lf
